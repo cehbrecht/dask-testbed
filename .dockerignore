@@ -1,5 +1,8 @@
 # Documentation
 README.md
-test
+LICENSE
+# build
+*.sh
+# Test data
 data
-out.nc
+*.nc

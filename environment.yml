@@ -1,0 +1,39 @@
+# conda env create -f environment.yml
+name: dask
+channels:
+  - conda-forge
+dependencies:
+  - pip
+  - python=3
+  # helpers
+  - humanize
+  # jupyter extensions
+  - jupyter_bokeh
+  - jupyterlab-topbar
+  - jupyterlab-system-monitor
+  # multiprocessing
+  # - bottleneck
+  # - cloudpickle
+  # - conda-forge::blas=*=openblas
+  # - cython
+  # - dill
+  # dask
+  - dask
+  - xarray
+  - cachey
+  - netcdf4
+  # plotting
+  - bokeh
+  - matplotlib
+  # pandas
+  - pandas
+  # intake
+  # - intake
+  # - intake-esm
+  # - gcsfs
+  # - zarr
+  # - fsspec
+  # diagnostics
+  #- dask-memusage
+  #- filprofiler
+  #- nbresuse

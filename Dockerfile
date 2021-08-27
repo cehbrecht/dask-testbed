@@ -1,9 +1,6 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-#ARG OWNER=jupyter
-#ARG BASE_CONTAINER=$OWNER/minimal-notebook
-#FROM $BASE_CONTAINER
-FROM jupyter/minimal-notebook:latest
+FROM jupyter/minimal-notebook
 
 LABEL maintainer="Carsten <ehbrecht@dkrz.de>"
 
@@ -17,31 +14,9 @@ RUN apt-get update --yes && \
 USER ${NB_UID}
 
 # Install Python 3 packages
-RUN mamba install --quiet --yes \
-    'bokeh' \
-    'jupyter_bokeh' \
-    'bottleneck' \
-    'cloudpickle' \
-    'conda-forge::blas=*=openblas' \
-    'cython' \
-    'dill' \
-    'dask' \
-    'dask-memusage' \
-    'filprofiler' \
-    'nbresuse' \
-    'jupyterlab-topbar' \
-    'jupyterlab-system-monitor' \
-    'matplotlib' \
-    'pandas' \
-    'intake' \
-    'intake-esm' \
-    'gcsfs' \
-    'zarr' \
-    'fsspec' \
-    'netcdf4' \
-    'humanize' \
-    'cachey' \
-    'xarray' && \
+COPY environment.yml ./
+
+RUN mamba env update --name base --quiet --yes --file environment.yml && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
