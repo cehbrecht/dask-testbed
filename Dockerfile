@@ -16,7 +16,7 @@ USER ${NB_UID}
 # Install Python 3 packages
 COPY environment.yml ./
 
-RUN mamba env update --name base --quiet --yes --file environment.yml && \
+RUN mamba env update --name base --quiet --file environment.yml && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
