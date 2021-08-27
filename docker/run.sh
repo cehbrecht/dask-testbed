@@ -4,6 +4,7 @@ docker run \
   -p 8888:8888 \
   -e JUPYTER_ENABLE_LAB=yes \
   -v "${PWD}/..":/home/jovyan/work \
-  --cpus="4.0" \
-  --memory="4048mb" \
-  dask/dev
+  --cpus="1.0" \
+  --memory="1024m" \
+  --memory-reservation="1024m" \
+  notebook

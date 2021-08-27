@@ -1,5 +1,6 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
+
 FROM jupyter/minimal-notebook
 
 LABEL maintainer="Carsten <ehbrecht@dkrz.de>"
@@ -14,9 +15,9 @@ RUN apt-get update --yes && \
 USER ${NB_UID}
 
 # Install Python 3 packages
-COPY environment.yml ./
+COPY environment.yml env.yml
 
-RUN mamba env update --name base --quiet --file environment.yml && \
+RUN mamba env update --name base --quiet --file env.yml && \
     mamba clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

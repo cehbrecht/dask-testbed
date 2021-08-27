@@ -7,24 +7,19 @@
 # Show logs: docker-compose logs notebook
 # Restart: docker-compose restart notebook
 
-version: "3"
+version: "2.4"
 
 services:
   notebook:
     build: ..
     image: notebook
     container_name: notebook
+    cpus: "0.5"
+    mem_limit: 512m
+    # mem_reservation: 1024m
     volumes:
       - "..:/home/jovyan/work"
     ports:
       - "8888:8888"
     environment:
-      - JUPYTER_ENABLE_LAB:yes
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 1024M
-        reservations:
-          cpus: '1.0'
-          memory: 1024M
+      - JUPYTER_ENABLE_LAB=yes

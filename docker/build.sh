@@ -1,4 +1,3 @@
 #!/bin/bash
 
-# Build the notebook image
-docker-compose build
+docker build --rm -t notebook ..
