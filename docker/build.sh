@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker build --rm -t dask/dev ..
+# Build the notebook image
+docker-compose build
